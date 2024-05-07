@@ -10,26 +10,26 @@
 <body>
 <h1>People</h1>
 <div class="col-8 mx-auto">
-    <form class="mb-4">
+    <form class="mb-4" th:object="${person}">
         <div class="mb-3">
             <label for="firstName" class="form-label">First Name</label>
-            <input type="text" class="form-control" id="firstName" aria-describedby="firstNameHelp">
+            <input type="text" class="form-control" id="firstName" aria-describedby="firstNameHelp" th:field="*{firstName}">
         </div>
         <div class="mb-3">
             <label for="lastName" class="form-label">Last Name</label>
-            <input type="text" class="form-control" id="lastName" aria-describedby="lastNameHelp">
+            <input type="text" class="form-control" id="lastName" aria-describedby="lastNameHelp" th:field="*{lastName}">
         </div>
         <div class="mb-3">
             <label for="dateOfBirth" class="form-label">Date of birth</label>
-            <input type="date" class="form-control" id="dateOfBirth" aria-describedby="dateOfBirthHelp">
+            <input type="date" class="form-control" id="dateOfBirth" aria-describedby="dateOfBirthHelp" th:field="*{dateOfBirth}">
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email Address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" th:field="*{email}">
         </div>
         <div class="mb-3">
             <label for="salary" class="form-label">Salary</label>
-            <input type="number" class="form-control" id="salary" aria-describedby="salaryHelp">
+            <input type="number" class="form-control" id="salary" aria-describedby="salaryHelp" th:field="*{salary}">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
