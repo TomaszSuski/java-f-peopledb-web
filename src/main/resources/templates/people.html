@@ -10,7 +10,7 @@
 <body>
 <h1>People</h1>
 <div class="col-8 mx-auto">
-    <form class="mb-4" th:object="${person}">
+    <form class="mb-4" th:object="${person}" method="post">
         <div class="mb-3">
             <label for="firstName" class="form-label">First Name</label>
             <input type="text" class="form-control" id="firstName" aria-describedby="firstNameHelp" th:field="*{firstName}">
