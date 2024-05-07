@@ -8,9 +8,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 <body>
-<h1 class="text-centered">People</h1>
-<div class="col-8 mx-auto">
-    <form class="mb-4" th:object="${person}" method="post">
+
+<div class="col-md-8  col-sm-10 mx-auto my-3">
+    <h2>Add Person</h2>
+    <form class="mb-5" th:object="${person}" method="post">
         <div class="mb-3">
             <label for="firstName" class="form-label">First Name</label>
             <input type="text" class="form-control" id="firstName" aria-describedby="firstNameHelp" th:field="*{firstName}">
@@ -31,8 +32,9 @@
             <label for="salary" class="form-label">Salary</label>
             <input type="number" class="form-control" id="salary" aria-describedby="salaryHelp" th:field="*{salary}">
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Save Person</button>
     </form>
+    <h2>People List</h2>
     <table class="table table-bordered">
         <thead>
             <tr>
