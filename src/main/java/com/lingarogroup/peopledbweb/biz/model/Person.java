@@ -15,8 +15,4 @@ public class Person {
     private String lastName;
     private LocalDate dateOfBirth;
     private BigDecimal salary;
-
-    public String getFormattedDateOfBirth() {
-        return DateTimeFormatter.ofPattern("MM/dd/yyyy").format(dateOfBirth);
-    }
 }

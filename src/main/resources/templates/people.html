@@ -25,8 +25,12 @@
             <th scope="row" th:text="${person.id}">1</th>
             <td th:text="${person.lastName}">Mark</td>
             <td th:text="${person.firstName}">Otto</td>
-            <td th:text="${person.formattedDateOfBirth}">@mdo</td>
-            <td th:text="${person.salary}">@mdo</td>
+<!--            double curly braces tell spring to use specified formatter by annotation @Component and implementing specific spring interface -->
+            <td th:text="${{person.dateOfBirth}}">@mdo</td>
+<!--            another way is to use formatting form thymeleaf itself, uses hardcoded dollar sign here and thymeleaf formatting of decimal number-->
+            <td th:text="${'$ ' + #numbers.formatDecimal(person.salary, 1, 'DEFAULT' ,2,'DEFAULT')}">@mdo</td>
+<!--            and the same value of salary formatted using formatter class built a bit different from formatter for date of birth. But this is not working good (currency symbol depends on location - it shouldn't!) -->
+            <td th:text="${{person.salary}}">@mdo</td>
         </tr>
         <tr th:remove="all">
             <th scope="row">2</th>
