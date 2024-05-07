@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 <body>
-<h1>People</h1>
+<h1 class="text-centered">People</h1>
 <div class="col-8 mx-auto">
     <form class="mb-4" th:object="${person}" method="post">
         <div class="mb-3">
@@ -33,42 +33,45 @@
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-    <table class="table">
+    <table class="table table-bordered">
         <thead>
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Last Name</th>
-            <th scope="col">First Name</th>
-            <th scope="col">Date of birth</th>
-            <th scope="col">Email</th>
-            <th scope="col">Salary</th>
-            <th scope="col">Salary</th>
-        </tr>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Date of birth</th>
+                <th scope="col">Email</th>
+                <th scope="col">Salary</th>
+                <th scope="col">Salary</th>
+            </tr>
         </thead>
         <tbody>
-        <tr th:each="person : ${people}">
-            <th scope="row" th:text="${person.id}">1</th>
-            <td th:text="${person.lastName}">Mark</td>
-            <td th:text="${person.firstName}">Otto</td>
-<!--            double curly braces tell spring to use specified formatter by annotation @Component and implementing specific spring interface -->
-            <td th:text="${{person.dateOfBirth}}">@mdo</td>
-            <td th:text="${person.email}"></td>
-<!--            another way is to use formatting form thymeleaf itself, uses hardcoded dollar sign here and thymeleaf formatting of decimal number-->
-            <td th:text="${'$ ' + #numbers.formatDecimal(person.salary, 1, 'DEFAULT' ,2,'DEFAULT')}">@mdo</td>
-<!--            and the same value of salary formatted using formatter class built a bit different from formatter for date of birth. But this is not working good (currency symbol depends on location - it shouldn't!) -->
-            <td th:text="${{person.salary}}">@mdo</td>
-        </tr>
-        <tr th:remove="all">
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr th:remove="all">
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
-        </tr>
+            <tr>
+                <td colspan="7" class="text-center" th:if="${people.isEmpty()}">No people found</td>
+            </tr>
+            <tr th:each="person : ${people}">
+                <th scope="row" th:text="${person.id}">1</th>
+                <td th:text="${person.lastName}">Mark</td>
+                <td th:text="${person.firstName}">Otto</td>
+    <!--            double curly braces tell spring to use specified formatter by annotation @Component and implementing specific spring interface -->
+                <td th:text="${{person.dateOfBirth}}">@mdo</td>
+                <td th:text="${person.email}"></td>
+    <!--            another way is to use formatting form thymeleaf itself, uses hardcoded dollar sign here and thymeleaf formatting of decimal number-->
+                <td th:text="${'$ ' + #numbers.formatDecimal(person.salary, 1, 'DEFAULT' ,2,'DEFAULT')}">@mdo</td>
+    <!--            and the same value of salary formatted using formatter class built a bit different from formatter for date of birth. But this is not working good (currency symbol depends on location - it shouldn't!) -->
+                <td th:text="${{person.salary}}">@mdo</td>
+            </tr>
+            <tr th:remove="all">
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+            </tr>
+            <tr th:remove="all">
+                <th scope="row">3</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+            </tr>
         </tbody>
     </table>
 </div>

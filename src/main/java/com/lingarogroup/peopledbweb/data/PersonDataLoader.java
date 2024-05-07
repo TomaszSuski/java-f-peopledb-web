@@ -9,7 +9,8 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
-@Component
+// annotation is commented out to avoid running the data loader
+//@Component
 public class PersonDataLoader implements ApplicationRunner {
     private PersonRepository personRepository;
 
