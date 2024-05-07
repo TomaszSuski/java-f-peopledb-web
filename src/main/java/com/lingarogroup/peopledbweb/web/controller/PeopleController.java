@@ -21,7 +21,10 @@ public class PeopleController {
                 new Person(1L, "John", "Doe", LocalDate.of(1980, 1, 1), new BigDecimal("1000")),
                 new Person(2L, "Jane", "Doe", LocalDate.of(1985, 1, 1), new BigDecimal("2000")),
                 new Person(3L, "Jim", "Doe", LocalDate.of(1990, 1, 1), new BigDecimal("3000")),
-                new Person(4L, "Jill", "Doe", LocalDate.of(1995, 1, 1), new BigDecimal("4000"))
+                new Person(4L, "Jill", "Doe", LocalDate.of(1995, 1, 1), new BigDecimal("4000")),
+                new Person(5L, "Jack", "Doe", LocalDate.of(2000, 1, 1), new BigDecimal("5000")),
+                new Person(6L, "Jenny", "Doe", LocalDate.of(2005, 1, 1), new BigDecimal("6000")),
+                new Person(7L, "Jerry", "Doe", LocalDate.of(2010, 1, 1), new BigDecimal("7000"))
         );
         model.addAttribute("people", people);
         return "people";
