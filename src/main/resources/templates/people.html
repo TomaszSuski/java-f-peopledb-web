@@ -10,6 +10,29 @@
 <body>
 <h1>People</h1>
 <div class="col-8 mx-auto">
+    <form class="mb-4">
+        <div class="mb-3">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="firstName" aria-describedby="firstNameHelp">
+        </div>
+        <div class="mb-3">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="lastName" aria-describedby="lastNameHelp">
+        </div>
+        <div class="mb-3">
+            <label for="dateOfBirth" class="form-label">Date of birth</label>
+            <input type="date" class="form-control" id="dateOfBirth" aria-describedby="dateOfBirthHelp">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email Address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="salary" class="form-label">Salary</label>
+            <input type="number" class="form-control" id="salary" aria-describedby="salaryHelp">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
     <table class="table">
         <thead>
         <tr>
@@ -17,6 +40,8 @@
             <th scope="col">Last Name</th>
             <th scope="col">First Name</th>
             <th scope="col">Date of birth</th>
+            <th scope="col">Email</th>
+            <th scope="col">Salary</th>
             <th scope="col">Salary</th>
         </tr>
         </thead>
@@ -27,6 +52,7 @@
             <td th:text="${person.firstName}">Otto</td>
 <!--            double curly braces tell spring to use specified formatter by annotation @Component and implementing specific spring interface -->
             <td th:text="${{person.dateOfBirth}}">@mdo</td>
+            <td th:text="${person.email}"></td>
 <!--            another way is to use formatting form thymeleaf itself, uses hardcoded dollar sign here and thymeleaf formatting of decimal number-->
             <td th:text="${'$ ' + #numbers.formatDecimal(person.salary, 1, 'DEFAULT' ,2,'DEFAULT')}">@mdo</td>
 <!--            and the same value of salary formatted using formatter class built a bit different from formatter for date of birth. But this is not working good (currency symbol depends on location - it shouldn't!) -->

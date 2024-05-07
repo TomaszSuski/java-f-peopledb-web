@@ -23,7 +23,7 @@ public class PeopleController {
         return personRepository.findAll();
     }
     @GetMapping
-    public String showPeoplePage(Model model) {
+    public String showPeoplePage() {
         return "people";
     }
 }
