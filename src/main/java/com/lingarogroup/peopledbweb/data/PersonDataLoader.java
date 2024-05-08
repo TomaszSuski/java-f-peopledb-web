@@ -9,15 +9,33 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
-// annotation is commented out to avoid running the data loader
-//@Component
+/**
+ * The PersonDataLoader class implements the ApplicationRunner interface, which is a callback interface to run specific pieces of code when an application is fully started.
+ * This class is used to load initial data into the database.
+ * The @Component annotation is commented out to avoid running the data loader every time the application starts.
+ */
+// @Component
 public class PersonDataLoader implements ApplicationRunner {
     private PersonRepository personRepository;
 
+    /**
+     * The constructor for the PersonDataLoader class.
+     * It initializes the PersonRepository used by this class.
+     *
+     * @param personRepository The PersonRepository to be used by this class.
+     */
     public PersonDataLoader(PersonRepository personRepository) {
         this.personRepository = personRepository;
     }
 
+    /**
+     * The run method is overridden from the ApplicationRunner interface.
+     * It checks if the database is empty, and if so, it creates a list of Person objects and saves them to the database.
+     * This method is run every time the application starts.
+     *
+     * @param args The ApplicationArguments used by the application.
+     * @throws Exception If an error occurs while running the application.
+     */
     @Override
     public void run(ApplicationArguments args) throws Exception {
         if (personRepository.count() == 0) {

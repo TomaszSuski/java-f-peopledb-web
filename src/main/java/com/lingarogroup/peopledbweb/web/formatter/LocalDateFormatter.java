@@ -11,16 +11,17 @@ import java.util.Locale;
 @Component
 public class LocalDateFormatter implements Formatter<LocalDate> {
 
-    private final DateTimeFormatter printFormatter = DateTimeFormatter.ofPattern("MMMM dd, yyyy");
-    private final DateTimeFormatter parseFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-
+//    private final DateTimeFormatter printFormatter = DateTimeFormatter.ofPattern("MMMM dd, yyyy");
+//    private final DateTimeFormatter parseFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+//    returning to the default ISO_LOCAL_DATE format to be able to fill in the form for editing
+    private final DateTimeFormatter format = DateTimeFormatter.ISO_LOCAL_DATE;
     @Override
     public LocalDate parse(String text, Locale locale) throws ParseException {
-        return LocalDate.parse(text, parseFormatter);
+        return LocalDate.parse(text, format);
     }
 
     @Override
     public String print(LocalDate object, Locale locale) {
-        return printFormatter.format(object);
+        return format.format(object);
     }
 }
