@@ -11,26 +11,37 @@
 
 <div class="col-md-8  col-sm-10 mx-auto my-3">
     <h2>Add Person</h2>
-    <form class="mb-5" th:object="${person}" method="post">
+<!--    browser validation disabled for whole form -->
+    <form class="mb-5" th:object="${person}" method="post" novalidate>
         <div class="mb-3">
             <label for="firstName" class="form-label">First Name</label>
-            <input type="text" class="form-control" id="firstName" aria-describedby="firstNameHelp" th:field="*{firstName}">
+            <input type="text" class="form-control" th:errorclass="is-invalid" id="firstName" aria-describedby="firstNameHelp" th:field="*{firstName}">
+            <div id="validationFirstName" class="invalid-feedback" th:if="${#fields.hasErrors('${person.firstName}')}">
+                <span th:each="error : ${#fields.errors('${person.firstName}')}" th:text="${error}">Error</span>
+            </div>
         </div>
         <div class="mb-3">
             <label for="lastName" class="form-label">Last Name</label>
-            <input type="text" class="form-control" id="lastName" aria-describedby="lastNameHelp" th:field="*{lastName}">
+            <input type="text" class="form-control" th:errorclass="is-invalid" id="lastName" aria-describedby="lastNameHelp" th:field="*{lastName}">
+<!--            a simplified check to conditionally display element and the message if the field has errors -->
+            <div id="validationLastName" class="invalid-feedback" th:errors="*{lastName}">
+<!--                <span th:each="error : ${#fields.errors('*{lastName}')}" th:text="${error}">Error</span>-->
+            </div>
         </div>
         <div class="mb-3">
             <label for="dateOfBirth" class="form-label">Date of birth</label>
-            <input type="date" class="form-control" id="dateOfBirth" aria-describedby="dateOfBirthHelp" th:field="*{dateOfBirth}">
+            <input type="date" class="form-control" th:errorclass="is-invalid" id="dateOfBirth" aria-describedby="dateOfBirthHelp" th:field="*{dateOfBirth}">
+            <div id="validationDateOfBirth" class="invalid-feedback" th:errors="*{dateOfBirth}">Error</div>
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email Address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" th:field="*{email}">
+            <input type="email" class="form-control" th:errorclass="is-invalid" id="exampleInputEmail1" aria-describedby="emailHelp" th:field="*{email}">
+            <div id="validationEmail" class="invalid-feedback" th:errors="*{email}">Error</div>
         </div>
         <div class="mb-3">
             <label for="salary" class="form-label">Salary</label>
-            <input type="number" class="form-control" id="salary" aria-describedby="salaryHelp" th:field="*{salary}">
+            <input type="number" class="form-control" th:errorclass="is-invalid" id="salary" aria-describedby="salaryHelp" th:field="*{salary}">
+            <div id="validationSalary" class="invalid-feedback" th:errors="*{salary}">Error</div>
         </div>
         <button type="submit" class="btn btn-primary">Save Person</button>
     </form>
