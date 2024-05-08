@@ -43,6 +43,7 @@
             <input type="number" class="form-control" th:errorclass="is-invalid" id="salary" aria-describedby="salaryHelp" th:field="*{salary}">
             <div id="validationSalary" class="invalid-feedback" th:errors="*{salary}">Error</div>
         </div>
+        <input type="hidden" th:field="*{id}"/>
         <button type="submit" class="btn btn-primary">Save Person</button>
     </form>
     <h2>People List</h2>
@@ -76,6 +77,7 @@
                     <td th:text="${'$ ' + #numbers.formatDecimal(person.salary, 1, 'DEFAULT' ,2,'DEFAULT')}">@mdo</td>
         <!--            and the same value of salary formatted using formatter class built a bit different from formatter for date of birth. But this is not working good (currency symbol depends on location - it shouldn't!) -->
                     <td th:text="${{person.salary}}">@mdo</td>
+                    <td><button type="submit" name="edit" th:value="${person.id}" class="btn btn-secondary">Edit</button></td>
                 </tr>
                 <tr th:remove="all">
                     <th scope="row">2</th>

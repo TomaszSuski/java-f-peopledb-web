@@ -59,4 +59,11 @@ public class PeopleController {
         selections.ifPresent(personRepository::deleteAllById);
         return "redirect:people";
     }
+
+    @PostMapping(params = "edit")
+    public String editPerson(@RequestParam("edit") Long id, Model model) {
+        Person person = personRepository.findById(id).orElseThrow();
+        model.addAttribute("person", person);
+        return "people";
+    }
 }
