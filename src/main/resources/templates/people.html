@@ -45,6 +45,7 @@
         </div>
         <input type="hidden" th:field="*{id}"/>
         <button type="submit" class="btn btn-primary">Save Person</button>
+        <button type="submit" class="btn btn-secondary" name="cancel" value="true">Cancel</button>
     </form>
     <h2>People List</h2>
     <form method="post">
@@ -71,7 +72,9 @@
                     <td th:text="${person.lastName}">Mark</td>
                     <td th:text="${person.firstName}">Otto</td>
         <!--            double curly braces tell spring to use specified formatter by annotation @Component and implementing specific spring interface -->
-                    <td th:text="${{person.dateOfBirth}}">@mdo</td>
+<!--                    <td th:text="${{person.dateOfBirth}}">@mdo</td>-->
+<!--                    but when dealing with LocalDate object it's easier to make it in thymeleaf -->
+                    <td th:text="${#temporals.format(person.dateOfBirth, 'dd MMMM yyyy')}">@mdo</td>
                     <td th:text="${person.email}"></td>
         <!--            another way is to use formatting form thymeleaf itself, uses hardcoded dollar sign here and thymeleaf formatting of decimal number-->
                     <td th:text="${'$ ' + #numbers.formatDecimal(person.salary, 1, 'DEFAULT' ,2,'DEFAULT')}">@mdo</td>

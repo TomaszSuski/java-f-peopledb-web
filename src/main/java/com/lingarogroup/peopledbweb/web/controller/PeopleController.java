@@ -132,4 +132,16 @@ public class PeopleController {
         // Return the name of the view to be rendered.
         return "people";
     }
+
+    /**
+     * This method is mapped to the HTTP POST method and is only invoked when the "cancel=true" parameter is present in the request.
+     * It does not perform any operations on the model or the repository.
+     * It simply redirects to the "people" view, effectively cancelling any ongoing edit operation.
+     *
+     * @return A String representing the redirect route to the "people" view.
+     */
+    @PostMapping(params = "cancel=true")
+    public String cancelEdit() {
+        return "redirect:people";
+    }
 }
