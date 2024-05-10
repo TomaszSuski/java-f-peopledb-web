@@ -11,8 +11,8 @@
 
 <div class="col-md-8  col-sm-10 mx-auto my-3">
     <h2 th:text="#{person.form.header}">Add Person</h2>
-<!--    browser validation disabled for whole form -->
-    <form class="mb-5" th:object="${person}" method="post" novalidate>
+<!--    browser validation disabled for whole form. Adding encodingtype of multipart/form-data allows sending actual photo file instead of its name only -->
+    <form class="mb-5" th:object="${person}" method="post" novalidate enctype="multipart/form-data">
         <div class="mb-3">
             <label for="firstName" class="form-label">First Name</label>
             <input type="text" class="form-control" th:errorclass="is-invalid" id="firstName" aria-describedby="firstNameHelp" th:field="*{firstName}">

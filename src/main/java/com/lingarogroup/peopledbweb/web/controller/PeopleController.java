@@ -3,10 +3,12 @@ package com.lingarogroup.peopledbweb.web.controller;
 import com.lingarogroup.peopledbweb.biz.model.Person;
 import com.lingarogroup.peopledbweb.data.PersonRepository;
 import jakarta.validation.Valid;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,6 +21,7 @@ import java.util.Optional;
  */
 @Controller
 @RequestMapping("/people")
+@Log4j2
 public class PeopleController {
     private PersonRepository personRepository;
 
@@ -81,7 +84,11 @@ public class PeopleController {
     @PostMapping
     //    @Valid annotation tells Spring MVC to validate the Person object before calling the savePerson method.
     //    The validation rules are made by annotations in Person class itself
-    public String savePerson(@Valid Person person, Errors errors) {
+    //  @RequestParam annotation tells Spring MVC to bind the request parameter photoFileName to the photoFileName parameter.
+    //  The MultipartFile type represents a file uploaded as part of a multipart request. It binds binary data to the photoFileName parameter.
+    public String savePerson(@Valid Person person, Errors errors, @RequestParam MultipartFile photoFileName) {
+        log.info("photoFileName: " + photoFileName.getOriginalFilename());
+        log.info("photoFileSize: " + photoFileName.getSize());
         if (!errors.hasErrors()) {
             personRepository.save(person);
     //        redirect: is a special prefix that tells Spring MVC to redirect to a different route.
