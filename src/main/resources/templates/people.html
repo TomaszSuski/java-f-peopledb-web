@@ -43,6 +43,10 @@
             <input type="number" class="form-control" th:errorclass="is-invalid" id="salary" aria-describedby="salaryHelp" th:field="*{salary}">
             <div id="validationSalary" class="invalid-feedback" th:errors="*{salary}">Error</div>
         </div>
+        <div class="mb-3">
+            <label for="photoFileName" class="form-label">Photo</label>
+            <input class="form-control" type="file" id="photoFileName" th:field="*{photoFileName}">
+        </div>
         <input type="hidden" th:field="*{id}"/>
         <button type="submit" class="btn btn-primary">Save Person</button>
         <button type="submit" class="btn btn-secondary" name="cancel" value="true">Cancel</button>

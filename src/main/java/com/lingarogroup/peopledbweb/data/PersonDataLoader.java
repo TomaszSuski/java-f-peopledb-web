@@ -40,13 +40,13 @@ public class PersonDataLoader implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
         if (personRepository.count() == 0) {
             List<Person> people = List.of(
-                    new Person(null, "John", "Doe", LocalDate.of(1980, 1, 1), "fake@email.com", new BigDecimal("1000")),
-                    new Person(null, "Jane", "Doe", LocalDate.of(1985, 1, 1), "email.@example.com", new BigDecimal("2000")),
-                    new Person(null, "Jim", "Jackson", LocalDate.of(1990, 1, 1), "dummy@email.com", new BigDecimal("3000")),
-                    new Person(null, "Jill", "Jackson", LocalDate.of(1995, 1, 1), "another@dummy.mail", new BigDecimal("4000")),
-                    new Person(null, "Jack", "Smith", LocalDate.of(2000, 1, 1), "no@idea.now", new BigDecimal("5000")),
-                    new Person(null, "Jenny", "Doe", LocalDate.of(2005, 1, 1), "will@this.end", new BigDecimal("6000")),
-                    new Person(null, "Jerry", "Jackson", LocalDate.of(2010, 1, 1), "should@use.copypaste", new BigDecimal("7000"))
+                    new Person(null, "John", "Doe", LocalDate.of(1980, 1, 1), "fake@email.com", new BigDecimal("1000"), null),
+                    new Person(null, "Jane", "Doe", LocalDate.of(1985, 1, 1), "email.@example.com", new BigDecimal("2000"), null),
+                    new Person(null, "Jim", "Jackson", LocalDate.of(1990, 1, 1), "dummy@email.com", new BigDecimal("3000"), null),
+                    new Person(null, "Jill", "Jackson", LocalDate.of(1995, 1, 1), "another@dummy.mail", new BigDecimal("4000"), null),
+                    new Person(null, "Jack", "Smith", LocalDate.of(2000, 1, 1), "no@idea.now", new BigDecimal("5000"), null),
+                    new Person(null, "Jenny", "Doe", LocalDate.of(2005, 1, 1), "will@this.end", new BigDecimal("6000"), null),
+                    new Person(null, "Jerry", "Jackson", LocalDate.of(2010, 1, 1), "should@use.copypaste", new BigDecimal("7000"), null)
             );
             personRepository.saveAll(people);
         }
