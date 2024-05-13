@@ -94,6 +94,8 @@ public class PeopleController {
     //        redirect: is a special prefix that tells Spring MVC to redirect to a different route.
     //        in this case route is the same, but it refreshes the page
             return "redirect:people";
+        } else {
+            log.info("Validation errors: " + errors.getAllErrors());
         }
         return "people";
     }

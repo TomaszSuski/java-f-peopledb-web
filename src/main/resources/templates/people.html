@@ -84,6 +84,7 @@
                     <td th:text="${'$ ' + #numbers.formatDecimal(person.salary, 1, 'DEFAULT' ,2,'DEFAULT')}">@mdo</td>
         <!--            and the same value of salary formatted using formatter class built a bit different from formatter for date of birth. But this is not working good (currency symbol depends on location - it shouldn't!) -->
                     <td th:text="${{person.salary}}">@mdo</td>
+                    <td th:text="${{person.photoFileName}}">@mdo</td>
                     <td><button type="submit" name="edit" th:value="${person.id}" class="btn btn-secondary">Edit</button></td>
                 </tr>
                 <tr th:remove="all">
